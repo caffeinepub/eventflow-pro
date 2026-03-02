@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Font Declarations ─────────────────────────────────────────── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* ── Core palette: Deep Slate + Vivid Amber ── */
+    --background:       0.97 0.005 250;
+    --foreground:       0.18 0.02 255;
+
+    --card:             1 0 0;
+    --card-foreground:  0.18 0.02 255;
+
+    --popover:          1 0 0;
+    --popover-foreground: 0.18 0.02 255;
+
+    /* Primary: Deep navy-slate */
+    --primary:          0.22 0.05 258;
+    --primary-foreground: 0.985 0 0;
+
+    /* Secondary: Subtle slate */
+    --secondary:        0.94 0.01 255;
+    --secondary-foreground: 0.22 0.05 258;
+
+    /* Muted: Fog */
+    --muted:            0.95 0.008 255;
+    --muted-foreground: 0.52 0.02 255;
+
+    /* Accent: Vivid amber */
+    --accent:           0.78 0.17 68;
+    --accent-foreground: 0.12 0.04 258;
+
+    --destructive:      0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border:           0.88 0.012 255;
+    --input:            0.88 0.012 255;
+    --ring:             0.22 0.05 258;
+
+    /* Chart colors */
+    --chart-1:          0.52 0.18 258;
+    --chart-2:          0.78 0.17 68;
+    --chart-3:          0.65 0.2 145;
+    --chart-4:          0.72 0.15 30;
+    --chart-5:          0.6 0.22 290;
+
+    /* Status colors */
+    --status-planned:   0.65 0.12 258;
+    --status-confirmed: 0.62 0.18 155;
+    --status-inprogress: 0.72 0.17 68;
+    --status-completed: 0.56 0.17 145;
+    --status-cancelled: 0.52 0.08 20;
+
+    /* Sidebar */
+    --sidebar:          0.165 0.03 258;
+    --sidebar-foreground: 0.88 0.012 255;
+    --sidebar-primary:  0.78 0.17 68;
+    --sidebar-primary-foreground: 0.12 0.04 258;
+    --sidebar-accent:   0.22 0.04 258;
+    --sidebar-accent-foreground: 0.88 0.012 255;
+    --sidebar-border:   0.28 0.04 258;
+    --sidebar-ring:     0.78 0.17 68;
+  }
+
+  .dark {
+    --background:       0.12 0.025 258;
+    --foreground:       0.94 0.01 255;
+
+    --card:             0.17 0.03 258;
+    --card-foreground:  0.94 0.01 255;
+
+    --popover:          0.2 0.035 258;
+    --popover-foreground: 0.94 0.01 255;
+
+    --primary:          0.78 0.17 68;
+    --primary-foreground: 0.12 0.04 258;
+
+    --secondary:        0.22 0.04 258;
+    --secondary-foreground: 0.88 0.012 255;
+
+    --muted:            0.22 0.04 258;
+    --muted-foreground: 0.58 0.02 255;
+
+    --accent:           0.78 0.17 68;
+    --accent-foreground: 0.12 0.04 258;
+
+    --destructive:      0.65 0.22 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border:           0.28 0.035 258;
+    --input:            0.28 0.035 258;
+    --ring:             0.78 0.17 68;
+
+    --sidebar:          0.14 0.028 258;
+    --sidebar-foreground: 0.88 0.012 255;
+    --sidebar-primary:  0.78 0.17 68;
+    --sidebar-primary-foreground: 0.12 0.04 258;
+    --sidebar-accent:   0.2 0.035 258;
+    --sidebar-accent-foreground: 0.88 0.012 255;
+    --sidebar-border:   0.22 0.035 258;
+    --sidebar-ring:     0.78 0.17 68;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+/* ─── Custom Utilities ──────────────────────────────────────────── */
+@layer utilities {
+  .status-planned {
+    background-color: oklch(var(--status-planned) / 0.15);
+    color: oklch(var(--status-planned));
+  }
+  .status-confirmed {
+    background-color: oklch(var(--status-confirmed) / 0.15);
+    color: oklch(var(--status-confirmed));
+  }
+  .status-inprogress {
+    background-color: oklch(var(--status-inprogress) / 0.15);
+    color: oklch(var(--status-inprogress));
+  }
+  .status-completed {
+    background-color: oklch(var(--status-completed) / 0.15);
+    color: oklch(var(--status-completed));
+  }
+  .status-cancelled {
+    background-color: oklch(var(--status-cancelled) / 0.15);
+    color: oklch(var(--status-cancelled));
+  }
+
+  .sidebar-nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-all duration-150;
+    color: oklch(var(--sidebar-foreground) / 0.7);
+  }
+  .sidebar-nav-item:hover {
+    color: oklch(var(--sidebar-foreground));
+    background-color: oklch(var(--sidebar-accent));
+  }
+  .sidebar-nav-item.active {
+    color: oklch(var(--sidebar-primary));
+    background-color: oklch(var(--sidebar-primary) / 0.12);
+    font-weight: 600;
+  }
+}
